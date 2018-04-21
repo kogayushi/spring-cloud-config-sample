@@ -2,13 +2,10 @@ server:
   port: 8888
 
 spring:
-  application:
-    name: springCloudServer
   cloud:
     config:
      server:
        git:
-         uri: file:/Users/kogayushi/Documents/workspace/spring-cloud-config-sample
-         basedir: config-repo
+         uri: https://github.com/kogayushi/spring-cloud-config-sample-repo.git
          clone-on-start:  false
          force-pull: false
