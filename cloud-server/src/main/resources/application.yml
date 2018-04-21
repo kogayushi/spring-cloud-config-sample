@@ -1,0 +1,16 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: foo
+  profiles:
+    active: dev,mysql
+  cloud:
+    config:
+     server:
+       git:
+         uri: file:///Users/kogayushi/Documents/workspace/spring-cloud-config-sample
+         basedir: config-repo
+         clone-on-start:  false
+         force-pull: false
