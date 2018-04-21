@@ -1,0 +1,55 @@
+buildscript {
+    ext {
+        springBootVersion = '1.5.12.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'eclipse'
+    apply plugin: 'idea'
+    apply plugin: 'org.springframework.boot'
+
+    dependencies {
+        runtime('org.springframework.boot:spring-boot-devtools')
+        compileOnly('org.springframework.boot:spring-boot-configuration-processor')
+        testCompile('org.springframework.boot:spring-boot-starter-test')
+    }
+
+    ext {
+        springCloudVersion = 'Edgware.SR3'
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        }
+    }
+
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+
+    def defaultEncoding = 'UTF-8'
+    tasks.withType(AbstractCompile).each { it.options.encoding = defaultEncoding }
+    tasks.withType(GroovyCompile).each { it.groovyOptions.encoding = defaultEncoding }
+
+    repositories {
+        mavenCentral()
+    }
+
+    idea {
+        module {
+            downloadSources true
+            downloadJavadoc true
+            outputDir file('build/classes/main')
+            testOutputDir file('build/classes/test')
+        }
+    }
+}
+
