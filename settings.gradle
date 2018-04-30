@@ -1,1 +1,1 @@
-include 'cloud-bus', 'cloud-server', 'cloud-client'
+include 'cloud-server', 'cloud-client'
