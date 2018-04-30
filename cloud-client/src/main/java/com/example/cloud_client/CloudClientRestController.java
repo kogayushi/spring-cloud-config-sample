@@ -18,4 +18,9 @@ public class CloudClientRestController {
         return cloudClientProperties.getFoo();
     }
 
+    @ResponseBody
+    @GetMapping(path = "/local", produces = MediaType.TEXT_PLAIN_VALUE)
+    public String local() {
+        return cloudClientProperties.getLocal();
+    }
 }
