@@ -30,6 +30,8 @@ public class CloudServerApplication {
 
 ### Adjusting to someone's situation 
 #### When you have to put your configuration file into VCS in public network such as github public repository.
+In such situation, let's encrypt credentials.
+
 ##### Prerequisites
 Encryption and Decryption feature requires `Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files`.
 
