@@ -9,6 +9,7 @@ spring:
       server:
         git:
           uri: https://github.com/kogayushi/spring-cloud-config-sample-repo.git
+      fail-fast: true
 
 security:
   user:

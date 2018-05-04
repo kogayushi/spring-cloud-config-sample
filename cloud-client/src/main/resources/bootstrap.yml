@@ -3,6 +3,9 @@ spring:
     active: local
   application:
     name: cloudClient
+  cloud:
+    config:
+      fail-fast: true
 ---
 spring:
   profiles: local

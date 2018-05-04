@@ -5,3 +5,6 @@ management:
 info:
   local: local
   foo: foo
+
+logging:
+  config: classpath:logback-spring.xml

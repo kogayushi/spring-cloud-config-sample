@@ -3,3 +3,7 @@ management:
     enabled: false
 
 info.local: local
+
+logging:
+  config: ${spring.cloud.config.uri}/${spring.application.name}/default/master/logback-spring.xml
+
