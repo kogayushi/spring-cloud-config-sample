@@ -109,3 +109,28 @@ Okay, in such as situation, you can specify it by command line arguments, like f
 ```bash
 java -jar cloud-config-client.jar --spring.cloud.config.username=userName --spring.cloud.config.password=passw0rd
 ```
+
+##### wanna read logback.xml from cloud server ?
+exclude logback.xml for spring security like this.
+
+when you do this, don't forget disable csrf. 
+
+```java
+@EnableConfigServer
+@SpringBootApplication
+public class CloudServerApplication extends WebSecurityConfigurerAdapter {
+
+    public static void main(String[] args) {
+        SpringApplication.run(CloudServerApplication.class, args);
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.antMatcher("/**").authorizeRequests()
+            .antMatchers("/**/logback*.xml").permitAll()
+            .anyRequest().authenticated().and()
+            .httpBasic().and()
+            .csrf().disable();
+    }
+}
+```
